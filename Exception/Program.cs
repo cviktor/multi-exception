@@ -24,6 +24,7 @@ namespace Hiba
                 }
                 catch (ParseException e)
                 {
+                    //felhasználói hiba üzenet
                     Console.WriteLine("A hibás karakterem: " + e.Character);
                     Console.WriteLine(e.ToString());
                     x++;
@@ -45,15 +46,30 @@ namespace Hiba
 
         static int MyParse(string text)
         {
-            for (int i = 0; i < text.Length; i++)
+            try
             {
-                if (!char.IsDigit(text[i]))
+                for (int i = 0; i < text.Length; i++)
                 {
-                    throw new ParseException(text[i], "Nem szám karakter");
+                    if (!char.IsDigit(text[i]))
+                    {
+                        ThrowParseException(text[i]);
+                    }
                 }
-            }
 
-            return int.Parse(text); //biztos működni fog
+                return int.Parse(text); //biztos működni fog
+            }
+            catch (ParseException e)
+            {
+                //saját naplózás
+                Console.WriteLine("Parse hiba történt. Eredeti szöveg: " + text);
+                //throw e; NEM JÓ mert újra beállítja a StackTracet
+                throw;
+            }
+        }
+
+        static void ThrowParseException(char c)
+        {
+            throw new ParseException(c, "Nem szám karakter");
         }
 
     }
