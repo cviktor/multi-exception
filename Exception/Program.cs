@@ -22,9 +22,9 @@ namespace Hiba
                     Console.WriteLine("A szám 10szerese: " + number * 10);
                     x = 3;
                 }
-                catch
+                catch(Exception e)
                 {
-                    Console.WriteLine("Hiba történt");
+                    Console.WriteLine(e.ToString());
                     x++;
                 }
             }
