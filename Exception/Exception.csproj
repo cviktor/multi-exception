@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C0E87E42-C410-4535-BADF-7D527BEB01B4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Exception</RootNamespace>
+    <RootNamespace>Hiba</RootNamespace>
     <AssemblyName>Exception</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParseException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

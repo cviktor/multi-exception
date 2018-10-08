@@ -22,13 +22,23 @@ namespace Hiba
                     Console.WriteLine("A szám 10szerese: " + number * 10);
                     x = 3;
                 }
-                catch(Exception e)
+                catch (ParseException e)
                 {
+                    Console.WriteLine("A hibás karakterem: " + e.Character);
                     Console.WriteLine(e.ToString());
                     x++;
                 }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Hibás formátum");
+                    x++;
+                }
+                catch //(Exception)
+                {
+                    Console.WriteLine("Ismeretlen hiba történt");
+                }
             }
-            
+
 
             Console.ReadKey();
         }
@@ -39,7 +49,7 @@ namespace Hiba
             {
                 if (!char.IsDigit(text[i]))
                 {
-                    throw new Exception("Hibás karakter " + text[i]);
+                    throw new ParseException(text[i], "Nem szám karakter");
                 }
             }
 
