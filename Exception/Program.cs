@@ -4,24 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exception
+namespace Hiba
 {
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Kérek egy számot");
+            int x = 0;
 
-            try
+            while (x < 3)
             {
-                string line = Console.ReadLine();
-                int number = MyParse(line);
-                Console.WriteLine("A szám 10szerese: " + number * 10);
+                try
+                {
+                    string line = Console.ReadLine();
+                    int number = MyParse(line);
+                    Console.WriteLine("A szám 10szerese: " + number * 10);
+                    x = 3;
+                }
+                catch
+                {
+                    Console.WriteLine("Hiba történt");
+                    x++;
+                }
             }
-            catch
-            {
-                Console.WriteLine("Hiba történt");
-            }
+            
 
             Console.ReadKey();
         }
@@ -32,7 +39,7 @@ namespace Exception
             {
                 if (!char.IsDigit(text[i]))
                 {
-                    throw new System.Exception("Hibás karakter " + text[i]);
+                    throw new Exception("Hibás karakter " + text[i]);
                 }
             }
 
