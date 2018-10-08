@@ -38,6 +38,10 @@ namespace Hiba
                 {
                     Console.WriteLine("Ismeretlen hiba történt");
                 }
+                finally
+                {
+                    Console.WriteLine("Köszönöm hogy a programot használtad");
+                }
             }
 
 
@@ -58,13 +62,17 @@ namespace Hiba
 
                 return int.Parse(text); //biztos működni fog
             }
-            catch (ParseException e)
+            finally
             {
-                //saját naplózás
-                Console.WriteLine("Parse hiba történt. Eredeti szöveg: " + text);
-                //throw e; NEM JÓ mert újra beállítja a StackTracet
-                throw;
+                Console.WriteLine("Csak finally");
             }
+            //catch (ParseException e)
+            //{
+            //    //saját naplózás
+            //    Console.WriteLine("Parse hiba történt. Eredeti szöveg: " + text);
+            //    //throw e; NEM JÓ mert újra beállítja a StackTracet
+            //    throw;
+            //}
         }
 
         static void ThrowParseException(char c)
