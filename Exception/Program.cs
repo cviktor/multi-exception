@@ -10,6 +10,8 @@ namespace Hiba
     {
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+
             Console.WriteLine("Kérek egy számot");
             int x = 0;
 
@@ -44,8 +46,14 @@ namespace Hiba
                 }
             }
 
+            throw new Exception("asdasd");
 
             Console.ReadKey();
+        }
+
+        private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+        {
+            Console.WriteLine("Nem kezel kivétel");
         }
 
         static int MyParse(string text)
